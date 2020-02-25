@@ -1,0 +1,6 @@
+--lib qse-shellfind
+--project-base=quantum-script-extension-shellfind
+--source-is-separate
+--use-project=quantum-script.static
+--install-dev
+--install-inc=quantum-script-extension
