@@ -17,5 +17,5 @@ cmdX(){
 	fi
 }
 
-cmdX xyo-cc --mode=$ACTION @util/quantum-script-extension-shellfind.static.compile.info
-cmdX xyo-cc --mode=$ACTION @util/quantum-script-extension-shellfind.dynamic.compile.info
+cmdX xyo-cc --mode=$ACTION @util/quantum-script-extension-shellfind.static.compile
+cmdX xyo-cc --mode=$ACTION @util/quantum-script-extension-shellfind.dynamic.compile
