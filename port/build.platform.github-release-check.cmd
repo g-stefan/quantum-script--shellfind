@@ -5,7 +5,7 @@ rem Created by Grigore Stefan <g_stefan@yahoo.com>
 
 SETLOCAL ENABLEDELAYEDEXPANSION
 
-echo -^> git-release-check quantum-script-extension-shellfind
+echo -^> github-release-check quantum-script-extension-shellfind
 
 set PROJECT=quantum-script-extension-shellfind
 if not exist source\%PROJECT%.version.ini echo Error - no version & exit 1
