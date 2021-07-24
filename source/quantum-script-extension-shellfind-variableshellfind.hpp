@@ -45,39 +45,27 @@ namespace Quantum {
 				class VariableShellFind :
 					public Variable {
 						XYO_DISALLOW_COPY_ASSIGN_MOVE(VariableShellFind);
+						XYO_DYNAMIC_TYPE_DEFINE(QUANTUM_SCRIPT_EXTENSION_SHELLFIND_EXPORT, VariableShellFind);
 					protected:
 						QUANTUM_SCRIPT_EXTENSION_SHELLFIND_EXPORT static const char *strTypeShellFind;
-						QUANTUM_SCRIPT_EXTENSION_SHELLFIND_EXPORT static const char *typeShellFindKey;
-						QUANTUM_SCRIPT_EXTENSION_SHELLFIND_EXPORT static const void *typeShellFind;
 					public:
 
 						XYO::ShellFind value;
 
-						inline VariableShellFind() {
-							variableType = registerType(typeShellFind, typeShellFindKey);
-						};
+						QUANTUM_SCRIPT_EXTENSION_SHELLFIND_EXPORT VariableShellFind();
 
 						QUANTUM_SCRIPT_EXTENSION_SHELLFIND_EXPORT void activeDestructor();
 
 						QUANTUM_SCRIPT_EXTENSION_SHELLFIND_EXPORT static Variable *newVariable();
 
-						QUANTUM_SCRIPT_EXTENSION_SHELLFIND_EXPORT String getType();
+						QUANTUM_SCRIPT_EXTENSION_SHELLFIND_EXPORT String getVariableType();
 
-						QUANTUM_SCRIPT_EXTENSION_SHELLFIND_EXPORT Variable &operatorReference(Symbol symbolId);
 						QUANTUM_SCRIPT_EXTENSION_SHELLFIND_EXPORT Variable *instancePrototype();
 
 						QUANTUM_SCRIPT_EXTENSION_SHELLFIND_EXPORT TPointer<Iterator> getIteratorValue();
 
 						QUANTUM_SCRIPT_EXTENSION_SHELLFIND_EXPORT bool toBoolean();
 						QUANTUM_SCRIPT_EXTENSION_SHELLFIND_EXPORT String toString();
-						//
-						inline static bool isVariableShellFind(const Variable *value) {
-							if(typeShellFind == nullptr) {
-								typeShellFind = registerType(typeShellFind, typeShellFindKey);
-							};
-							return (value->variableType == typeShellFind);
-						};
-
 				};
 
 

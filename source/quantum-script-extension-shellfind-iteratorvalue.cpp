@@ -26,12 +26,12 @@ namespace Quantum {
 
 				using namespace XYO;
 
-				bool IteratorValue::next(TPointerX<Variable> &out) {
+				bool IteratorValue::next(Variable *out) {
 					if(!sourceShellFind) {
-						out = Context::getValueUndefined();
+						out->referenceSet(Context::getValueUndefined());
 						return false;
 					};
-					out = TPointer<Variable>(VariableString::newVariable(sourceShellFind->name));
+					out->referenceSet(VariableString::newVariable(sourceShellFind->name));
 					sourceShellFind->next();
 					return true;
 				};

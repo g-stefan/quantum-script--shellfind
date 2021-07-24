@@ -57,7 +57,7 @@ namespace Quantum {
 						inline IteratorValue() {
 						};
 
-						QUANTUM_SCRIPT_EXTENSION_SHELLFIND_EXPORT bool next(TPointerX<Variable> &out);
+						QUANTUM_SCRIPT_EXTENSION_SHELLFIND_EXPORT bool next(Variable *out);
 
 						inline void activeDestructor() {
 							value_.deleteMemory();

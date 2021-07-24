@@ -28,20 +28,20 @@ namespace Quantum {
 
 				using namespace XYO;
 
-				const char *VariableShellFind::typeShellFindKey = "{6F5DF4E6-0BBB-469D-B990-4AC7D36B8887}";
-				const void *VariableShellFind::typeShellFind;
+				XYO_DYNAMIC_TYPE_IMPLEMENT(VariableShellFind, "{6F5DF4E6-0BBB-469D-B990-4AC7D36B8887}");
+
 				const char *VariableShellFind::strTypeShellFind = "ShellFind";
 
-				String VariableShellFind::getType() {
+				VariableShellFind::VariableShellFind() {
+					XYO_DYNAMIC_TYPE_PUSH(VariableShellFind);
+				};
+
+				String VariableShellFind::getVariableType() {
 					return strTypeShellFind;
 				};
 
 				Variable *VariableShellFind::newVariable() {
 					return (Variable *) TMemory<VariableShellFind>::newMemory();
-				};
-
-				Variable &VariableShellFind::operatorReference(Symbol symbolId) {
-					return operatorReferenceX(symbolId, (Extension::ShellFind::getContext())->prototypeShellFind->prototype);
 				};
 
 				Variable *VariableShellFind::instancePrototype() {
