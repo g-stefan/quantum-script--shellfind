@@ -20,7 +20,6 @@
 #include "quantum-script-extension-shellfind-variableshellfind.hpp"
 #include "quantum-script-extension-shellfind-iteratorvalue.hpp"
 
-
 namespace Quantum {
 	namespace Script {
 		namespace Extension {
@@ -41,7 +40,7 @@ namespace Quantum {
 				};
 
 				Variable *VariableShellFind::newVariable() {
-					return (Variable *) TMemory<VariableShellFind>::newMemory();
+					return (Variable *)TMemory<VariableShellFind>::newMemory();
 				};
 
 				Variable *VariableShellFind::instancePrototype() {
@@ -71,5 +70,3 @@ namespace Quantum {
 		};
 	};
 };
-
-

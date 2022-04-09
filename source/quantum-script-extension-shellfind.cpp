@@ -15,7 +15,7 @@
 #include "quantum-script-extension-shellfind.hpp"
 #include "quantum-script-extension-shellfind-license.hpp"
 #ifndef QUANTUM_SCRIPT_EXTENSION_SHELLFIND_NO_VERSION
-#include "quantum-script-extension-shellfind-version.hpp"
+#	include "quantum-script-extension-shellfind-version.hpp"
 #endif
 //
 #include "quantum-script-variableboolean.hpp"
@@ -45,8 +45,8 @@ namespace Quantum {
 
 				static TPointer<Variable> functionShellFind(VariableFunction *function, Variable *this_, VariableArray *arguments) {
 					TPointerX<Variable> &toFind(arguments->index(0));
-					if(TIsTypeExact<VariableUndefined>(toFind) ||
-						TIsType<VariableNull>(toFind)) {
+					if (TIsTypeExact<VariableUndefined>(toFind) ||
+					    TIsType<VariableNull>(toFind)) {
 						return VariableShellFind::newVariable();
 					};
 					TPointer<Variable> find_(VariableShellFind::newVariable());
@@ -70,7 +70,7 @@ namespace Quantum {
 					shellFindContext->prototypeShellFind.newMemory();
 
 					defaultPrototypeFunction = (VariableFunction *)VariableFunction::newVariable(nullptr, nullptr, nullptr, functionShellFind, nullptr, nullptr);
-					(Context::getGlobalObject())->setPropertyBySymbol(shellFindContext->symbolFunctionShellFind,defaultPrototypeFunction);
+					(Context::getGlobalObject())->setPropertyBySymbol(shellFindContext->symbolFunctionShellFind, defaultPrototypeFunction);
 					shellFindContext->prototypeShellFind = defaultPrototypeFunction->prototype;
 				};
 
@@ -85,11 +85,11 @@ namespace Quantum {
 #ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
 					printf("- shellfind-find\n");
 #endif
-					if(!TIsType<VariableShellFind>(this_)) {
+					if (!TIsType<VariableShellFind>(this_)) {
 						throw(Error("invalid parameter"));
 					};
 
-					if(((VariableShellFind *)this_)->value.find((arguments->index(0))->toString())) {
+					if (((VariableShellFind *)this_)->value.find((arguments->index(0))->toString())) {
 						this_->incReferenceCount();
 						return this_;
 					};
@@ -102,7 +102,7 @@ namespace Quantum {
 					printf("- shellfind-find-next\n");
 #endif
 
-					if(!TIsType<VariableShellFind>(this_)) {
+					if (!TIsType<VariableShellFind>(this_)) {
 						throw(Error("invalid parameter"));
 					};
 
@@ -114,22 +114,21 @@ namespace Quantum {
 					printf("- shellfind-close\n");
 #endif
 
-					if(!TIsType<VariableShellFind>(this_)) {
+					if (!TIsType<VariableShellFind>(this_)) {
 						throw(Error("invalid parameter"));
 					};
 
-					((VariableShellFind *) this_)->value.close();
+					((VariableShellFind *)this_)->value.close();
 
 					return Context::getValueUndefined();
 				};
-
 
 				static TPointer<Variable> isReadOnly(VariableFunction *function, Variable *this_, VariableArray *arguments) {
 #ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
 					printf("- shellfind-is-read-only\n");
 #endif
 
-					if(!TIsType<VariableShellFind>(this_)) {
+					if (!TIsType<VariableShellFind>(this_)) {
 						throw(Error("invalid parameter"));
 					};
 
@@ -141,7 +140,7 @@ namespace Quantum {
 					printf("- shellfind-is-directory\n");
 #endif
 
-					if(!TIsType<VariableShellFind>(this_)) {
+					if (!TIsType<VariableShellFind>(this_)) {
 						throw(Error("invalid parameter"));
 					};
 
@@ -153,7 +152,7 @@ namespace Quantum {
 					printf("- shellfind-is-file\n");
 #endif
 
-					if(!TIsType<VariableShellFind>(this_)) {
+					if (!TIsType<VariableShellFind>(this_)) {
 						throw(Error("invalid parameter"));
 					};
 
@@ -165,7 +164,7 @@ namespace Quantum {
 					printf("- shellfind-name\n");
 #endif
 
-					if(!TIsType<VariableShellFind>(this_)) {
+					if (!TIsType<VariableShellFind>(this_)) {
 						throw(Error("invalid parameter"));
 					};
 
@@ -177,7 +176,7 @@ namespace Quantum {
 					printf("- shellfind-is-valid\n");
 #endif
 
-					if(!TIsType<VariableShellFind>(this_)) {
+					if (!TIsType<VariableShellFind>(this_)) {
 						throw(Error("invalid parameter"));
 					};
 
@@ -187,7 +186,6 @@ namespace Quantum {
 				void registerInternalExtension(Executive *executive) {
 					executive->registerInternalExtension("ShellFind", initExecutive);
 				};
-
 
 				void initExecutive(Executive *executive, void *extensionId) {
 
@@ -204,15 +202,14 @@ namespace Quantum {
 					newContext(executive, extensionId);
 
 					executive->setFunction2("ShellFind.isShellFind(x)", isShellFind);
-					executive->setFunction2("ShellFind.prototype.find(file)",  findFile);
-					executive->setFunction2("ShellFind.prototype.next()",  findNext);
-					executive->setFunction2("ShellFind.prototype.close()",  findClose);
-					executive->setFunction2("ShellFind.prototype.isReadOnly()",  isReadOnly);
-					executive->setFunction2("ShellFind.prototype.isDirectory()",  isDirectory);
-					executive->setFunction2("ShellFind.prototype.isFile()",  isFile);
-					executive->setFunction2("ShellFind.prototype.name()",  name);
-					executive->setFunction2("ShellFind.prototype.isValid()",  isValid);
-
+					executive->setFunction2("ShellFind.prototype.find(file)", findFile);
+					executive->setFunction2("ShellFind.prototype.next()", findNext);
+					executive->setFunction2("ShellFind.prototype.close()", findClose);
+					executive->setFunction2("ShellFind.prototype.isReadOnly()", isReadOnly);
+					executive->setFunction2("ShellFind.prototype.isDirectory()", isDirectory);
+					executive->setFunction2("ShellFind.prototype.isFile()", isFile);
+					executive->setFunction2("ShellFind.prototype.name()", name);
+					executive->setFunction2("ShellFind.prototype.isValid()", isValid);
 				};
 
 			};
@@ -225,4 +222,3 @@ extern "C" QUANTUM_SCRIPT_EXTENSION_SHELLFIND_EXPORT void quantumScriptExtension
 	Quantum::Script::Extension::ShellFind::initExecutive(executive, extensionId);
 };
 #endif
-

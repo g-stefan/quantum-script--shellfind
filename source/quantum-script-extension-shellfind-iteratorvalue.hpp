@@ -11,11 +11,11 @@
 #define QUANTUM_SCRIPT_EXTENSION_SHELLFIND_ITERATORVALUE_HPP
 
 #ifndef QUANTUM_SCRIPT_EXTENSION_SHELLFIND_VARIABLESHELLFIND_HPP
-#include "quantum-script-extension-shellfind-variableshellfind.hpp"
+#	include "quantum-script-extension-shellfind-variableshellfind.hpp"
 #endif
 
 #ifndef QUANTUM_SCRIPT_ITERATOR_HPP
-#include "quantum-script-iterator.hpp"
+#	include "quantum-script-iterator.hpp"
 #endif
 
 namespace Quantum {
@@ -30,12 +30,10 @@ namespace Quantum {
 	};
 };
 
-
 namespace XYO {
 	namespace ManagedMemory {
-		template<>
-		class TMemory<Quantum::Script::Extension::ShellFind::IteratorValue>:
-			public TMemoryPoolActive<Quantum::Script::Extension::ShellFind::IteratorValue> {};
+		template <>
+		class TMemory<Quantum::Script::Extension::ShellFind::IteratorValue> : public TMemoryPoolActive<Quantum::Script::Extension::ShellFind::IteratorValue> {};
 	};
 };
 
@@ -46,23 +44,20 @@ namespace Quantum {
 
 				using namespace XYO;
 
-				class IteratorValue :
-					public Iterator {
+				class IteratorValue : public Iterator {
 						XYO_DISALLOW_COPY_ASSIGN_MOVE(IteratorValue);
-					public:
 
+					public:
 						TPointer<VariableShellFind> value_;
 						XYO::ShellFind *sourceShellFind;
 
-						inline IteratorValue() {
-						};
+						inline IteratorValue(){};
 
 						QUANTUM_SCRIPT_EXTENSION_SHELLFIND_EXPORT bool next(Variable *out);
 
 						inline void activeDestructor() {
 							value_.deleteMemory();
 						};
-
 				};
 
 			};
@@ -71,4 +66,3 @@ namespace Quantum {
 };
 
 #endif
-

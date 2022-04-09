@@ -11,23 +11,23 @@
 #define QUANTUM_SCRIPT_EXTENSION_SHELLFIND_HPP
 
 #ifndef QUANTUM_SCRIPT_HPP
-#include "quantum-script.hpp"
+#	include "quantum-script.hpp"
 #endif
 
 #ifndef QUANTUM_SCRIPT_EXTENSION_SHELLFIND__EXPORT_HPP
-#include "quantum-script-extension-shellfind--export.hpp"
+#	include "quantum-script-extension-shellfind--export.hpp"
 #endif
 
 #ifndef QUANTUM_SCRIPT_EXTENSION_SHELLFIND_COPYRIGHT_HPP
-#include "quantum-script-extension-shellfind-copyright.hpp"
+#	include "quantum-script-extension-shellfind-copyright.hpp"
 #endif
 
 #ifndef QUANTUM_SCRIPT_EXTENSION_SHELLFIND_LICENSE_HPP
-#include "quantum-script-extension-shellfind-license.hpp"
+#	include "quantum-script-extension-shellfind-license.hpp"
 #endif
 
 #ifndef QUANTUM_SCRIPT_EXTENSION_SHELLFIND_VERSION_HPP
-#include "quantum-script-extension-shellfind-version.hpp"
+#	include "quantum-script-extension-shellfind-version.hpp"
 #endif
 
 namespace Quantum {
@@ -37,11 +37,10 @@ namespace Quantum {
 
 				using namespace Quantum::Script;
 
-				class ShellFindContext:
-					public Object {
+				class ShellFindContext : public Object {
 						XYO_DISALLOW_COPY_ASSIGN_MOVE(ShellFindContext);
-					public:
 
+					public:
 						Symbol symbolFunctionShellFind;
 						TPointerX<Prototype> prototypeShellFind;
 
@@ -59,4 +58,3 @@ namespace Quantum {
 };
 
 #endif
-

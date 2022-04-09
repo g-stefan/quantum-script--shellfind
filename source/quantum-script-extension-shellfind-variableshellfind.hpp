@@ -11,7 +11,7 @@
 #define QUANTUM_SCRIPT_EXTENSION_SHELLFIND_VARIABLESHELLFIND_HPP
 
 #ifndef QUANTUM_SCRIPT_VARIABLE_HPP
-#include "quantum-script-variable.hpp"
+#	include "quantum-script-variable.hpp"
 #endif
 
 namespace Quantum {
@@ -29,9 +29,8 @@ namespace Quantum {
 
 namespace XYO {
 	namespace ManagedMemory {
-		template<>
-		class TMemory<Quantum::Script::Extension::ShellFind::VariableShellFind>:
-			public TMemoryPoolActive<Quantum::Script::Extension::ShellFind::VariableShellFind> {};
+		template <>
+		class TMemory<Quantum::Script::Extension::ShellFind::VariableShellFind> : public TMemoryPoolActive<Quantum::Script::Extension::ShellFind::VariableShellFind> {};
 	};
 };
 
@@ -42,14 +41,14 @@ namespace Quantum {
 
 				using namespace XYO;
 
-				class VariableShellFind :
-					public Variable {
+				class VariableShellFind : public Variable {
 						XYO_DISALLOW_COPY_ASSIGN_MOVE(VariableShellFind);
 						XYO_DYNAMIC_TYPE_DEFINE(QUANTUM_SCRIPT_EXTENSION_SHELLFIND_EXPORT, VariableShellFind);
+
 					protected:
 						QUANTUM_SCRIPT_EXTENSION_SHELLFIND_EXPORT static const char *strTypeShellFind;
-					public:
 
+					public:
 						XYO::ShellFind value;
 
 						QUANTUM_SCRIPT_EXTENSION_SHELLFIND_EXPORT VariableShellFind();
@@ -68,11 +67,9 @@ namespace Quantum {
 						QUANTUM_SCRIPT_EXTENSION_SHELLFIND_EXPORT String toString();
 				};
 
-
 			};
 		};
 	};
 };
 
 #endif
-

@@ -18,7 +18,6 @@
 #include "quantum-script-variablenumber.hpp"
 #include "quantum-script-variablestring.hpp"
 
-
 namespace Quantum {
 	namespace Script {
 		namespace Extension {
@@ -27,7 +26,7 @@ namespace Quantum {
 				using namespace XYO;
 
 				bool IteratorValue::next(Variable *out) {
-					if(!sourceShellFind) {
+					if (!sourceShellFind) {
 						out->referenceSet(Context::getValueUndefined());
 						return false;
 					};
@@ -36,9 +35,7 @@ namespace Quantum {
 					return true;
 				};
 
-
 			};
 		};
 	};
 };
-
