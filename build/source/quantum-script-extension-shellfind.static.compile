@@ -1,6 +1,0 @@
---lib qse-shellfind
---project-base=quantum-script-extension-shellfind
---build-include
---use-project=quantum-script.static
---install-dev
---install-inc=quantum-script-extension
