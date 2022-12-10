@@ -15,43 +15,43 @@
 
 namespace XYO::QuantumScript::Extension::ShellFind {
 
-				XYO_DYNAMIC_TYPE_IMPLEMENT(VariableShellFind, "{6F5DF4E6-0BBB-469D-B990-4AC7D36B8887}");
+	XYO_DYNAMIC_TYPE_IMPLEMENT(VariableShellFind, "{6F5DF4E6-0BBB-469D-B990-4AC7D36B8887}");
 
-				const char *VariableShellFind::strTypeShellFind = "ShellFind";
+	const char *VariableShellFind::strTypeShellFind = "ShellFind";
 
-				VariableShellFind::VariableShellFind() {
-					XYO_DYNAMIC_TYPE_PUSH(VariableShellFind);
-				};
+	VariableShellFind::VariableShellFind() {
+		XYO_DYNAMIC_TYPE_PUSH(VariableShellFind);
+	};
 
-				String VariableShellFind::getVariableType() {
-					return strTypeShellFind;
-				};
+	String VariableShellFind::getVariableType() {
+		return strTypeShellFind;
+	};
 
-				Variable *VariableShellFind::newVariable() {
-					return (Variable *)TMemory<VariableShellFind>::newMemory();
-				};
+	Variable *VariableShellFind::newVariable() {
+		return (Variable *)TMemory<VariableShellFind>::newMemory();
+	};
 
-				Variable *VariableShellFind::instancePrototype() {
-					return (Extension::ShellFind::getContext())->prototypeShellFind->prototype;
-				};
+	Variable *VariableShellFind::instancePrototype() {
+		return (Extension::ShellFind::getContext())->prototypeShellFind->prototype;
+	};
 
-				void VariableShellFind::activeDestructor() {
-					value.close();
-				};
+	void VariableShellFind::activeDestructor() {
+		value.close();
+	};
 
-				TPointer<Iterator> VariableShellFind::getIteratorValue() {
-					IteratorValue *iterator_ = (IteratorValue *)TMemory<IteratorValue>::newMemory();
-					iterator_->value_ = this;
-					iterator_->sourceShellFind = &this->value;
-					return iterator_;
-				};
+	TPointer<Iterator> VariableShellFind::getIteratorValue() {
+		IteratorValue *iterator_ = (IteratorValue *)TMemory<IteratorValue>::newMemory();
+		iterator_->value_ = this;
+		iterator_->sourceShellFind = &this->value;
+		return iterator_;
+	};
 
-				bool VariableShellFind::toBoolean() {
-					return true;
-				};
+	bool VariableShellFind::toBoolean() {
+		return true;
+	};
 
-				String VariableShellFind::toString() {
-					return strTypeShellFind;
-				};
+	String VariableShellFind::toString() {
+		return strTypeShellFind;
+	};
 
-			};
+};

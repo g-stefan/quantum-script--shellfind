@@ -12,183 +12,182 @@
 #include <XYO/QuantumScript.Extension/ShellFind/Context.hpp>
 
 namespace XYO::QuantumScript::Extension::ShellFind {
-				
-				ShellFindContext::ShellFindContext() {
-					symbolFunctionShellFind = 0;
-					prototypeShellFind.pointerLink(this);
-				};
 
-				ShellFindContext *getContext() {
-					return TSingleton<ShellFindContext>::getValue();
-				};
+	ShellFindContext::ShellFindContext() {
+		symbolFunctionShellFind = 0;
+		prototypeShellFind.pointerLink(this);
+	};
 
-				static TPointer<Variable> functionShellFind(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-					TPointerX<Variable> &toFind(arguments->index(0));
-					if (TIsTypeExact<VariableUndefined>(toFind) ||
-					    TIsType<VariableNull>(toFind)) {
-						return VariableShellFind::newVariable();
-					};
-					TPointer<Variable> find_(VariableShellFind::newVariable());
-					((VariableShellFind *)find_.value())->value.find(toFind->toString());
-					return find_;
-				};
+	ShellFindContext *getContext() {
+		return TSingleton<ShellFindContext>::getValue();
+	};
 
-				static void deleteContext() {
-					ShellFindContext *shellFindContext = getContext();
-					shellFindContext->prototypeShellFind.deleteMemory();
-					shellFindContext->symbolFunctionShellFind = 0;
-				};
+	static TPointer<Variable> functionShellFind(VariableFunction *function, Variable *this_, VariableArray *arguments) {
+		TPointerX<Variable> &toFind(arguments->index(0));
+		if (TIsTypeExact<VariableUndefined>(toFind) ||
+		    TIsType<VariableNull>(toFind)) {
+			return VariableShellFind::newVariable();
+		};
+		TPointer<Variable> find_(VariableShellFind::newVariable());
+		((VariableShellFind *)find_.value())->value.find(toFind->toString());
+		return find_;
+	};
 
-				static void newContext(Executive *executive, void *extensionId) {
-					VariableFunction *defaultPrototypeFunction;
+	static void deleteContext() {
+		ShellFindContext *shellFindContext = getContext();
+		shellFindContext->prototypeShellFind.deleteMemory();
+		shellFindContext->symbolFunctionShellFind = 0;
+	};
 
-					ShellFindContext *shellFindContext = getContext();
-					executive->setExtensionDeleteContext(extensionId, deleteContext);
+	static void newContext(Executive *executive, void *extensionId) {
+		VariableFunction *defaultPrototypeFunction;
 
-					shellFindContext->symbolFunctionShellFind = Context::getSymbol("ShellFind");
-					shellFindContext->prototypeShellFind.newMemory();
+		ShellFindContext *shellFindContext = getContext();
+		executive->setExtensionDeleteContext(extensionId, deleteContext);
 
-					defaultPrototypeFunction = (VariableFunction *)VariableFunction::newVariable(nullptr, nullptr, nullptr, functionShellFind, nullptr, nullptr);
-					(Context::getGlobalObject())->setPropertyBySymbol(shellFindContext->symbolFunctionShellFind, defaultPrototypeFunction);
-					shellFindContext->prototypeShellFind = defaultPrototypeFunction->prototype;
-				};
+		shellFindContext->symbolFunctionShellFind = Context::getSymbol("ShellFind");
+		shellFindContext->prototypeShellFind.newMemory();
 
-				static TPointer<Variable> isShellFind(VariableFunction *function, Variable *this_, VariableArray *arguments) {
+		defaultPrototypeFunction = (VariableFunction *)VariableFunction::newVariable(nullptr, nullptr, nullptr, functionShellFind, nullptr, nullptr);
+		(Context::getGlobalObject())->setPropertyBySymbol(shellFindContext->symbolFunctionShellFind, defaultPrototypeFunction);
+		shellFindContext->prototypeShellFind = defaultPrototypeFunction->prototype;
+	};
+
+	static TPointer<Variable> isShellFind(VariableFunction *function, Variable *this_, VariableArray *arguments) {
 #ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
-					printf("- shellfind-is-shell-find\n");
+		printf("- shellfind-is-shell-find\n");
 #endif
-					return VariableBoolean::newVariable(TIsType<VariableShellFind>(arguments->index(0)));
-				};
+		return VariableBoolean::newVariable(TIsType<VariableShellFind>(arguments->index(0)));
+	};
 
-				static TPointer<Variable> findFile(VariableFunction *function, Variable *this_, VariableArray *arguments) {
+	static TPointer<Variable> findFile(VariableFunction *function, Variable *this_, VariableArray *arguments) {
 #ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
-					printf("- shellfind-find\n");
+		printf("- shellfind-find\n");
 #endif
-					if (!TIsType<VariableShellFind>(this_)) {
-						throw(Error("invalid parameter"));
-					};
+		if (!TIsType<VariableShellFind>(this_)) {
+			throw(Error("invalid parameter"));
+		};
 
-					if (((VariableShellFind *)this_)->value.find((arguments->index(0))->toString())) {
-						this_->incReferenceCount();
-						return this_;
-					};
+		if (((VariableShellFind *)this_)->value.find((arguments->index(0))->toString())) {
+			this_->incReferenceCount();
+			return this_;
+		};
 
-					return Context::getValueUndefined();
-				};
+		return Context::getValueUndefined();
+	};
 
-				static TPointer<Variable> findNext(VariableFunction *function, Variable *this_, VariableArray *arguments) {
+	static TPointer<Variable> findNext(VariableFunction *function, Variable *this_, VariableArray *arguments) {
 #ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
-					printf("- shellfind-find-next\n");
-#endif
-
-					if (!TIsType<VariableShellFind>(this_)) {
-						throw(Error("invalid parameter"));
-					};
-
-					return VariableBoolean::newVariable(((VariableShellFind *)this_)->value.next());
-				};
-
-				static TPointer<Variable> findClose(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
-					printf("- shellfind-close\n");
+		printf("- shellfind-find-next\n");
 #endif
 
-					if (!TIsType<VariableShellFind>(this_)) {
-						throw(Error("invalid parameter"));
-					};
+		if (!TIsType<VariableShellFind>(this_)) {
+			throw(Error("invalid parameter"));
+		};
 
-					((VariableShellFind *)this_)->value.close();
+		return VariableBoolean::newVariable(((VariableShellFind *)this_)->value.next());
+	};
 
-					return Context::getValueUndefined();
-				};
-
-				static TPointer<Variable> isReadOnly(VariableFunction *function, Variable *this_, VariableArray *arguments) {
+	static TPointer<Variable> findClose(VariableFunction *function, Variable *this_, VariableArray *arguments) {
 #ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
-					printf("- shellfind-is-read-only\n");
+		printf("- shellfind-close\n");
 #endif
 
-					if (!TIsType<VariableShellFind>(this_)) {
-						throw(Error("invalid parameter"));
-					};
+		if (!TIsType<VariableShellFind>(this_)) {
+			throw(Error("invalid parameter"));
+		};
 
-					return VariableBoolean::newVariable(((VariableShellFind *)this_)->value.isReadOnly);
-				};
+		((VariableShellFind *)this_)->value.close();
 
-				static TPointer<Variable> isDirectory(VariableFunction *function, Variable *this_, VariableArray *arguments) {
+		return Context::getValueUndefined();
+	};
+
+	static TPointer<Variable> isReadOnly(VariableFunction *function, Variable *this_, VariableArray *arguments) {
 #ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
-					printf("- shellfind-is-directory\n");
+		printf("- shellfind-is-read-only\n");
 #endif
 
-					if (!TIsType<VariableShellFind>(this_)) {
-						throw(Error("invalid parameter"));
-					};
+		if (!TIsType<VariableShellFind>(this_)) {
+			throw(Error("invalid parameter"));
+		};
 
-					return VariableBoolean::newVariable(((VariableShellFind *)this_)->value.isDirectory);
-				};
+		return VariableBoolean::newVariable(((VariableShellFind *)this_)->value.isReadOnly);
+	};
 
-				static TPointer<Variable> isFile(VariableFunction *function, Variable *this_, VariableArray *arguments) {
+	static TPointer<Variable> isDirectory(VariableFunction *function, Variable *this_, VariableArray *arguments) {
 #ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
-					printf("- shellfind-is-file\n");
+		printf("- shellfind-is-directory\n");
 #endif
 
-					if (!TIsType<VariableShellFind>(this_)) {
-						throw(Error("invalid parameter"));
-					};
+		if (!TIsType<VariableShellFind>(this_)) {
+			throw(Error("invalid parameter"));
+		};
 
-					return VariableBoolean::newVariable(((VariableShellFind *)this_)->value.isFile);
-				};
+		return VariableBoolean::newVariable(((VariableShellFind *)this_)->value.isDirectory);
+	};
 
-				static TPointer<Variable> name(VariableFunction *function, Variable *this_, VariableArray *arguments) {
+	static TPointer<Variable> isFile(VariableFunction *function, Variable *this_, VariableArray *arguments) {
 #ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
-					printf("- shellfind-name\n");
+		printf("- shellfind-is-file\n");
 #endif
 
-					if (!TIsType<VariableShellFind>(this_)) {
-						throw(Error("invalid parameter"));
-					};
+		if (!TIsType<VariableShellFind>(this_)) {
+			throw(Error("invalid parameter"));
+		};
 
-					return VariableString::newVariable(((VariableShellFind *)this_)->value.name);
-				};
+		return VariableBoolean::newVariable(((VariableShellFind *)this_)->value.isFile);
+	};
 
-				static TPointer<Variable> isValid(VariableFunction *function, Variable *this_, VariableArray *arguments) {
+	static TPointer<Variable> name(VariableFunction *function, Variable *this_, VariableArray *arguments) {
 #ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
-					printf("- shellfind-is-valid\n");
+		printf("- shellfind-name\n");
 #endif
 
-					if (!TIsType<VariableShellFind>(this_)) {
-						throw(Error("invalid parameter"));
-					};
+		if (!TIsType<VariableShellFind>(this_)) {
+			throw(Error("invalid parameter"));
+		};
 
-					return VariableBoolean::newVariable(((VariableShellFind *)this_)->value);
-				};
+		return VariableString::newVariable(((VariableShellFind *)this_)->value.name);
+	};
 
-				void registerInternalExtension(Executive *executive) {
-					executive->registerInternalExtension("ShellFind", initExecutive);
-				};
+	static TPointer<Variable> isValid(VariableFunction *function, Variable *this_, VariableArray *arguments) {
+#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+		printf("- shellfind-is-valid\n");
+#endif
 
-				void initExecutive(Executive *executive, void *extensionId) {
+		if (!TIsType<VariableShellFind>(this_)) {
+			throw(Error("invalid parameter"));
+		};
 
-					String info = "ShellFind\r\n";
-					info << License::shortLicense();
+		return VariableBoolean::newVariable(((VariableShellFind *)this_)->value);
+	};
 
-					executive->setExtensionName(extensionId, "ShellFind");
-					executive->setExtensionInfo(extensionId, info);
-					executive->setExtensionVersion(extensionId, Extension::ShellFind::Version::versionWithBuild());
-					executive->setExtensionPublic(extensionId, true);
+	void registerInternalExtension(Executive *executive) {
+		executive->registerInternalExtension("ShellFind", initExecutive);
+	};
 
-					newContext(executive, extensionId);
+	void initExecutive(Executive *executive, void *extensionId) {
 
-					executive->setFunction2("ShellFind.isShellFind(x)", isShellFind);
-					executive->setFunction2("ShellFind.prototype.find(file)", findFile);
-					executive->setFunction2("ShellFind.prototype.next()", findNext);
-					executive->setFunction2("ShellFind.prototype.close()", findClose);
-					executive->setFunction2("ShellFind.prototype.isReadOnly()", isReadOnly);
-					executive->setFunction2("ShellFind.prototype.isDirectory()", isDirectory);
-					executive->setFunction2("ShellFind.prototype.isFile()", isFile);
-					executive->setFunction2("ShellFind.prototype.name()", name);
-					executive->setFunction2("ShellFind.prototype.isValid()", isValid);
-				};
+		String info = "ShellFind\r\n";
+		info << License::shortLicense();
 
+		executive->setExtensionName(extensionId, "ShellFind");
+		executive->setExtensionInfo(extensionId, info);
+		executive->setExtensionVersion(extensionId, Extension::ShellFind::Version::versionWithBuild());
+		executive->setExtensionPublic(extensionId, true);
+
+		newContext(executive, extensionId);
+
+		executive->setFunction2("ShellFind.isShellFind(x)", isShellFind);
+		executive->setFunction2("ShellFind.prototype.find(file)", findFile);
+		executive->setFunction2("ShellFind.prototype.next()", findNext);
+		executive->setFunction2("ShellFind.prototype.close()", findClose);
+		executive->setFunction2("ShellFind.prototype.isReadOnly()", isReadOnly);
+		executive->setFunction2("ShellFind.prototype.isDirectory()", isDirectory);
+		executive->setFunction2("ShellFind.prototype.isFile()", isFile);
+		executive->setFunction2("ShellFind.prototype.name()", name);
+		executive->setFunction2("ShellFind.prototype.isValid()", isValid);
+	};
 
 };
 

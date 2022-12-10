@@ -13,8 +13,7 @@
 
 namespace XYO::QuantumScript::Extension::ShellFind::License {
 
-	XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT const char *licenseHeader();
-	XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT const char *licenseBody();
+	XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT const char *license();
 	XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT const char *shortLicense();
 
 };

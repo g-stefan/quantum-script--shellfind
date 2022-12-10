@@ -13,17 +13,17 @@
 
 namespace XYO::QuantumScript::Extension::ShellFind {
 
-				class ShellFindContext : public Object {
-						XYO_DISALLOW_COPY_ASSIGN_MOVE(ShellFindContext);
+	class ShellFindContext : public Object {
+			XYO_DISALLOW_COPY_ASSIGN_MOVE(ShellFindContext);
 
-					public:
-						Symbol symbolFunctionShellFind;
-						TPointerX<Prototype> prototypeShellFind;
+		public:
+			Symbol symbolFunctionShellFind;
+			TPointerX<Prototype> prototypeShellFind;
 
-						XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT ShellFindContext();
-				};
+			XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT ShellFindContext();
+	};
 
-				XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT ShellFindContext *getContext();
+	XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT ShellFindContext *getContext();
 };
 
 #endif

@@ -10,16 +10,16 @@
 
 #include <XYO/QuantumScript.Extension/ShellFind/IteratorValue.hpp>
 
-namespace XYO::QuantumScript::Extension::ShellFind {				
+namespace XYO::QuantumScript::Extension::ShellFind {
 
-				bool IteratorValue::next(Variable *out) {
-					if (!sourceShellFind) {
-						out->referenceSet(Context::getValueUndefined());
-						return false;
-					};
-					out->referenceSet(VariableString::newVariable(sourceShellFind->name));
-					sourceShellFind->next();
-					return true;
-				};
+	bool IteratorValue::next(Variable *out) {
+		if (!sourceShellFind) {
+			out->referenceSet(Context::getValueUndefined());
+			return false;
+		};
+		out->referenceSet(VariableString::newVariable(sourceShellFind->name));
+		sourceShellFind->next();
+		return true;
+	};
 
-			};
+};

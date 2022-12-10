@@ -13,44 +13,43 @@
 
 namespace XYO::QuantumScript::Extension::ShellFind {
 
-				class VariableShellFind;
-			
+	class VariableShellFind;
+
 };
 
 namespace XYO::ManagedMemory {
-		template <>
-		class TMemory<XYO::QuantumScript::Extension::ShellFind::VariableShellFind> : public TMemoryPoolActive<XYO::QuantumScript::Extension::ShellFind::VariableShellFind> {};	
+	template <>
+	class TMemory<XYO::QuantumScript::Extension::ShellFind::VariableShellFind> : public TMemoryPoolActive<XYO::QuantumScript::Extension::ShellFind::VariableShellFind> {};
 };
 
 namespace XYO::QuantumScript::Extension::ShellFind {
-				
 
-				class VariableShellFind : public Variable {
-						XYO_DISALLOW_COPY_ASSIGN_MOVE(VariableShellFind);
-						XYO_DYNAMIC_TYPE_DEFINE(XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT, VariableShellFind);
+	class VariableShellFind : public Variable {
+			XYO_DISALLOW_COPY_ASSIGN_MOVE(VariableShellFind);
+			XYO_DYNAMIC_TYPE_DEFINE(XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT, VariableShellFind);
 
-					protected:
-						XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT static const char *strTypeShellFind;
+		protected:
+			XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT static const char *strTypeShellFind;
 
-					public:
-						XYO::System::ShellFind value;
+		public:
+			XYO::System::ShellFind value;
 
-						XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT VariableShellFind();
+			XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT VariableShellFind();
 
-						XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT void activeDestructor();
+			XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT void activeDestructor();
 
-						XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT static Variable *newVariable();
+			XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT static Variable *newVariable();
 
-						XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT String getVariableType();
+			XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT String getVariableType();
 
-						XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT Variable *instancePrototype();
+			XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT Variable *instancePrototype();
 
-						XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT TPointer<Iterator> getIteratorValue();
+			XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT TPointer<Iterator> getIteratorValue();
 
-						XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT bool toBoolean();
-						XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT String toString();
-				};
+			XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT bool toBoolean();
+			XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT String toString();
+	};
 
-			};
+};
 
 #endif
