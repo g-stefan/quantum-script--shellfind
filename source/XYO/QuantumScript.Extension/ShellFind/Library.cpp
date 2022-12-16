@@ -54,14 +54,14 @@ namespace XYO::QuantumScript::Extension::ShellFind {
 	};
 
 	static TPointer<Variable> isShellFind(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shellfind-is-shell-find\n");
 #endif
 		return VariableBoolean::newVariable(TIsType<VariableShellFind>(arguments->index(0)));
 	};
 
 	static TPointer<Variable> findFile(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shellfind-find\n");
 #endif
 		if (!TIsType<VariableShellFind>(this_)) {
@@ -77,7 +77,7 @@ namespace XYO::QuantumScript::Extension::ShellFind {
 	};
 
 	static TPointer<Variable> findNext(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shellfind-find-next\n");
 #endif
 
@@ -89,7 +89,7 @@ namespace XYO::QuantumScript::Extension::ShellFind {
 	};
 
 	static TPointer<Variable> findClose(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shellfind-close\n");
 #endif
 
@@ -103,7 +103,7 @@ namespace XYO::QuantumScript::Extension::ShellFind {
 	};
 
 	static TPointer<Variable> isReadOnly(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shellfind-is-read-only\n");
 #endif
 
@@ -115,7 +115,7 @@ namespace XYO::QuantumScript::Extension::ShellFind {
 	};
 
 	static TPointer<Variable> isDirectory(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shellfind-is-directory\n");
 #endif
 
@@ -127,7 +127,7 @@ namespace XYO::QuantumScript::Extension::ShellFind {
 	};
 
 	static TPointer<Variable> isFile(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shellfind-is-file\n");
 #endif
 
@@ -139,7 +139,7 @@ namespace XYO::QuantumScript::Extension::ShellFind {
 	};
 
 	static TPointer<Variable> name(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shellfind-name\n");
 #endif
 
@@ -151,7 +151,7 @@ namespace XYO::QuantumScript::Extension::ShellFind {
 	};
 
 	static TPointer<Variable> isValid(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shellfind-is-valid\n");
 #endif
 
