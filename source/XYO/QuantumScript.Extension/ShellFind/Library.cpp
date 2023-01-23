@@ -192,7 +192,7 @@ namespace XYO::QuantumScript::Extension::ShellFind {
 };
 
 #ifdef XYO_COMPILE_DYNAMIC_LIBRARY
-extern "C" void quantumScriptExtension(XYO::QuantumScript::Executive *executive, void *extensionId) {
+extern "C" XYO_QUANTUMSCRIPT_EXTENSION_SHELLFIND_EXPORT void quantumScriptExtension(XYO::QuantumScript::Executive *executive, void *extensionId) {
 	XYO::QuantumScript::Extension::ShellFind::initExecutive(executive, extensionId);
 };
 #endif
