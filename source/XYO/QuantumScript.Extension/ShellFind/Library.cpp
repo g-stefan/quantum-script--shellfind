@@ -169,7 +169,7 @@ namespace XYO::QuantumScript::Extension::ShellFind {
 	void initExecutive(Executive *executive, void *extensionId) {
 
 		String info = "ShellFind\r\n";
-		info << License::shortLicense();
+		info << License::shortLicense().c_str();
 
 		executive->setExtensionName(extensionId, "ShellFind");
 		executive->setExtensionInfo(extensionId, info);
