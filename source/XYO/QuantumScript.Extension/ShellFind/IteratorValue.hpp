@@ -25,7 +25,7 @@ namespace XYO::ManagedMemory {
 namespace XYO::QuantumScript::Extension::ShellFind {
 
 	class IteratorValue : public Iterator {
-			XYO_DISALLOW_COPY_ASSIGN_MOVE(IteratorValue);
+			XYO_PLATFORM_DISALLOW_COPY_ASSIGN_MOVE(IteratorValue);
 
 		public:
 			TPointer<VariableShellFind> value_;

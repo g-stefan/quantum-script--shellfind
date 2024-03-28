@@ -14,7 +14,7 @@
 namespace XYO::QuantumScript::Extension::ShellFind {
 
 	class ShellFindContext : public Object {
-			XYO_DISALLOW_COPY_ASSIGN_MOVE(ShellFindContext);
+			XYO_PLATFORM_DISALLOW_COPY_ASSIGN_MOVE(ShellFindContext);
 
 		public:
 			Symbol symbolFunctionShellFind;
