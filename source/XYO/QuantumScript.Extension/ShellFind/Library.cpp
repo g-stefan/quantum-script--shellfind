@@ -111,6 +111,10 @@ namespace XYO::QuantumScript::Extension::ShellFind {
 			throw(Error("invalid parameter"));
 		};
 
+		if (!((VariableShellFind *)this_)->value) {
+			return Context::getValueUndefined();
+		};
+
 		return VariableBoolean::newVariable(((VariableShellFind *)this_)->value.isReadOnly);
 	};
 
@@ -121,6 +125,10 @@ namespace XYO::QuantumScript::Extension::ShellFind {
 
 		if (!TIsType<VariableShellFind>(this_)) {
 			throw(Error("invalid parameter"));
+		};
+
+		if (!((VariableShellFind *)this_)->value) {
+			return Context::getValueUndefined();
 		};
 
 		return VariableBoolean::newVariable(((VariableShellFind *)this_)->value.isDirectory);
@@ -135,7 +143,27 @@ namespace XYO::QuantumScript::Extension::ShellFind {
 			throw(Error("invalid parameter"));
 		};
 
+		if (!((VariableShellFind *)this_)->value) {
+			return Context::getValueUndefined();
+		};
+
 		return VariableBoolean::newVariable(((VariableShellFind *)this_)->value.isFile);
+	};
+
+	static TPointer<Variable> isLink(VariableFunction *function, Variable *this_, VariableArray *arguments) {
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
+		printf("- shellfind-is-link\n");
+#endif
+
+		if (!TIsType<VariableShellFind>(this_)) {
+			throw(Error("invalid parameter"));
+		};
+
+		if (!((VariableShellFind *)this_)->value) {
+			return Context::getValueUndefined();
+		};
+
+		return VariableBoolean::newVariable(((VariableShellFind *)this_)->value.isLink);
 	};
 
 	static TPointer<Variable> name(VariableFunction *function, Variable *this_, VariableArray *arguments) {
@@ -145,6 +173,10 @@ namespace XYO::QuantumScript::Extension::ShellFind {
 
 		if (!TIsType<VariableShellFind>(this_)) {
 			throw(Error("invalid parameter"));
+		};
+
+		if (!((VariableShellFind *)this_)->value) {
+			return Context::getValueUndefined();
 		};
 
 		return VariableString::newVariable(((VariableShellFind *)this_)->value.name);
@@ -185,6 +217,7 @@ namespace XYO::QuantumScript::Extension::ShellFind {
 		executive->setFunction2("ShellFind.prototype.isReadOnly()", isReadOnly);
 		executive->setFunction2("ShellFind.prototype.isDirectory()", isDirectory);
 		executive->setFunction2("ShellFind.prototype.isFile()", isFile);
+		executive->setFunction2("ShellFind.prototype.isLink()", isLink);
 		executive->setFunction2("ShellFind.prototype.name()", name);
 		executive->setFunction2("ShellFind.prototype.isValid()", isValid);
 	};

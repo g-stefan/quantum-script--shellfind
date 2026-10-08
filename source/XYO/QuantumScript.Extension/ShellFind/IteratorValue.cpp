@@ -13,7 +13,8 @@
 namespace XYO::QuantumScript::Extension::ShellFind {
 
 	bool IteratorValue::next(Variable *out) {
-		if (!sourceShellFind) {
+		// at the end (or for a search that found nothing) name is not valid
+		if (!sourceShellFind || !(*sourceShellFind)) {
 			out->referenceSet(Context::getValueUndefined());
 			return false;
 		};
